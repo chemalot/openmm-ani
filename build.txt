@@ -1,0 +1,101 @@
+mkdir openmm-ani
+cd openmm-ani
+git clone git@github.roche.com:albertgo/openmm-ani.git
+
+# gpu host does not seem needed for building, just for running
+# however all ml modules are needed as given here
+getGPU 2 10
+ml purge
+ml Python/3.6.3
+ml foss/2017a
+ml nvidia/driver
+ml CMake/3.11.3-foss-2017a
+ml SWIG/3.0.8-foss-2017a-Python-3.6.3
+ml CUDA/9.0.176
+
+bash
+. activate openMM2
+cd openmm-ani/build
+   \rm -rf ../build/*
+   export ASE_ANI_DIR=/gstore/home/albertgo/dev/ASE_ANI
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$ASE_ANI_DIR/lib
+
+   condaEnv=/gstore/home/albertgo/.conda/envs/openMM2
+   #condaEnv=/gstore/home/albertgo/.conda/envs/openMM2_9.2
+   CUDA_DIR=/gstore/apps/CUDA/9.0.176
+   #CUDA_DIR=/gstore/apps/CUDA/9.2.148.1/
+   export OPENMM_CUDA_COMPILER=$CUDA_DIR/bin/nvcc
+
+   cmake -DOPENMM_DIR=/gstore/home/albertgo/.conda/envs/openMM2 \
+         -DCMAKE_INSTALL_PREFIX=/gstore/home/albertgo/.conda/envs/openMM2 \
+         -DASE_ANI_DIR=$ASE_ANI_DIR \
+         -DCUDA_TOOLKIT_ROOT_DIR=$CUDA_DIR \
+         -DNN_BUILD_CUDA_LIB=1 \
+          ../openmm-ani
+
+      make
+      make test
+      TestSerializeANIForce
+      make install
+      make PythonInstall
+
+
+cd ~/dev/openmm-ani/openmm-ani/demo/
+CUDA_DIR=/gstore/apps/CUDA/9.0.176
+export ASE_ANI_DIR=/gstore/home/albertgo/dev/ASE_ANI
+export OPENMM_CUDA_COMPILER=$CUDA_DIR/bin/nvcc
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$ASE_ANI_DIR/lib
+
+
+n=H2O; min_ani.py -netDir /gstore/home/albertgo/dev/ASE_ANI/ani_models/ani-1ccx_8x -in $n.pdb -out $n.min.pdb
+
+
+
+
+
+######################################### PYANI ######################
+# gpu host does not seem needed for building, just for running
+# however all ml modules are needed as given here
+getGPU 2 10
+ml purge
+ml Python/3.6.3
+ml pytorch
+ml foss/2017a
+ml nvidia/driver
+ml CMake/3.11.3-foss-2017a
+ml SWIG/3.0.8-foss-2017a-Python-3.6.3
+ml CUDA/9.0.176
+
+bash
+. activate openMM2
+cd ~/dev/openmm-ani/pybuild
+   \rm -rf ../pybuild/*
+
+   condaEnv=/gstore/home/albertgo/.conda/envs/openMM2
+   #condaEnv=/gstore/home/albertgo/.conda/envs/openMM2_9.2
+   CUDA_DIR=/gstore/apps/CUDA/9.0.176
+   #CUDA_DIR=/gstore/apps/CUDA/9.2.148.1/
+   export OPENMM_CUDA_COMPILER=$CUDA_DIR/bin/nvcc
+
+   cmake -DOPENMM_DIR=/gstore/home/albertgo/.conda/envs/openMM2 \
+         -DCMAKE_INSTALL_PREFIX=/gstore/home/albertgo/.conda/envs/openMM2 \
+         -DCUDA_TOOLKIT_ROOT_DIR=$CUDA_DIR \
+         -DNN_BUILD_CUDA_LIB=1 \
+          ../openmm-py
+
+      make
+      make test
+      TestReferencePYForce
+      make install
+      make PythonInstall
+      make && make test && make install && make PythonInstall
+
+
+
+cd ~/dev/openmm-ani/openmm-py/demo/
+# needs to be loaded before activate: ml pytorch
+CUDA_DIR=/gstore/apps/CUDA/9.0.176
+export OPENMM_CUDA_COMPILER=$CUDA_DIR/bin/nvcc
+
+n=H2O; min_harmonic.py -in $n.pdb -out $n.hc.min.pdb
+n=H2O; min_ani.py ?????? -in $n.pdb -out $n.min.pdb

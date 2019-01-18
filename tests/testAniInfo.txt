@@ -1,0 +1,4 @@
+../../ASE_ANI/ani_models/ani-1ccx_8x
+rHCNO-5.2R_16-3.5A_a4-8.params
+sae_linfit.dat
+8
