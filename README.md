@@ -64,7 +64,7 @@ Usage
 You should now be able to run a minimization of a water molecule by running the command line below:
 ```bash
 cd demo
-min_ani.py -netDir $ASE_ANI_DIR/ani_models/ani-1ccx_8x -in H20.pdb -out H20.min.pdb
+min_ani.py -netDir $ASE_ANI_DIR/ani_models/ani-1ccx_8x -in H2O.pdb -out H2O.min.pdb
 ```
 
 This runs a very simple minimization of water using OpenMM and the ANI neural Net potential.
