@@ -91,7 +91,7 @@ Smith, J. S.; Isayev, O.; Roitberg, A. E. [ANI-1: An Extensible Neural Network P
 
 Smith, J. S.; Nebgen, B.; Lubbers, N.; Isayev, O.; Roitberg, A. E. [Less Is More: Sampling Chemical Space with Active Learning](https://doi.org/10.1063/1.5023802). The Journal of Chemical Physics 2018, 148 (24), 241733.
 
-Smith, J. s.; Nebgen, B. T.; Zubatyuk, R.; Lubbers, N.; Devereux, C.; Barros, K.; Tretiak, S.; Isayev, O.; Roitberg, A. [Outsmarting Quantum Chemistry Through Transfer Learning]https://doi.org/10.26434/chemrxiv.6744440.v1). figshare 2018.
+Smith, J. s.; Nebgen, B. T.; Zubatyuk, R.; Lubbers, N.; Devereux, C.; Barros, K.; Tretiak, S.; Isayev, O.; Roitberg, A. [Outsmarting Quantum Chemistry Through Transfer Learning](https://doi.org/10.26434/chemrxiv.6744440.v1). figshare 2018.
 
 Eastman, P.; Swails, J.; Chodera, J. D.; McGibbon, R. T.; Zhao, Y.; Beauchamp, K. A.; Wang, L.-P.; Simmonett, A. C.; Harrigan, M. P.; Stern, C. D.; et al. [OpenMM 7: Rapid Development of High Performance Algorithms for Molecular Dynamics](https://doi.org/10.1371/journal.pcbi.1005659). PLOS Computational Biology 2017, 13 (7), e1005659.
 
