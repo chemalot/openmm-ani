@@ -82,6 +82,7 @@ The integration with [ANI](https://github.com/isayev/ASE_ANI) was done with lots
 Justin S. Smith. I would like to thank him for all his input and for providing me with a modified
 version of the ANI shared libraries.
 
+Petr Votava as instrumental in setting up the High Performance Computing enviroment and the OpenMM package at Genentch.
 
 
 Literature:
