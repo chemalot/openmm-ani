@@ -146,7 +146,7 @@ if __name__ == '__main__':
             sys.exit(1)
         atFitFile = atFitFile[0]
 
-    nEnsambles = len(glob.glob1(netDir,"train[1-9]") + glob.glob1(netDir,"train[1-9][0-9]"))
+    nEnsambles = len(glob.glob1(netDir,"train[0-9]") + glob.glob1(netDir,"train[1-9][0-9]"))
     if nEnsambles <= 0:
         warn("No train* directories found in " + netDir)
         sys.exit(1)
