@@ -1,3 +1,6 @@
+# gne specifics:
+*.gne.*
+
 # Prerequisites
 *.d
 

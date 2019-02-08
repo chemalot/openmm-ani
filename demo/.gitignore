@@ -1,4 +1,5 @@
 aniInfo.txt
+*.o.*
 *.log
 *.min.pdb
 *.min.sdf
