@@ -101,15 +101,18 @@ double CudaCalcANIForceKernel::execute(ContextImpl& context, bool includeForces,
     }
 
 
-    /*
     if (usePeriodic) {
-    // Example PBC usage -- set the periodic cell (use angstroms)
-    //=================Code below=================
-    //std::vector<float> cell = {10.000000,  0.000000,  0.000000,
-    //                            0.000000, 10.000000,  0.000000,
-    //                            0.000000,  0.000000, 10.000000};
-    //neurochem::set_cell(cell, true, true, true);
+       // Example PBC usage -- set the periodic cell (use angstroms)
+       // units A
+       //=================Code below=================
+       Vec3 box[3];
+       cu.getPeriodicBoxVectors(box[0], box[1], box[2]);
+       std::vector<float> cell = {10.000000,  0.000000,  0.000000,
+                                   0.000000, 10.000000,  0.000000,
+                                   0.000000,  0.000000, 10.000000};
+       neurochem::set_cell(cell, true, true, true);
 
+    /*
     //=================Code above=================
 
 
