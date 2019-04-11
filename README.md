@@ -16,7 +16,8 @@ system.
    access to the neural network definitions.
 
 2. Acquire modified shared libraries from the ANI authors. 
-   The library will soon be avialable directly from the [ASE_ANI](https://github.com/isayev/ASE_ANI) repository.
+   Currently a working version of the library for centos is available from the "centos_cuda90_py35" branch of
+   [ASE_ANI](://github.com/isayev/ASE_ANI/blob/centos_cuda90_py35/README.md)
 
 3. Create a directory in which to build the plugin.
 
@@ -65,6 +66,7 @@ You should now be able to run a minimization of a water molecule by running the 
 ```bash
 cd demo
 min_ani.py -netDir $ASE_ANI_DIR/ani_models/ani-1ccx_8x -in H2O.pdb -out H2O.min.pdb
+min_ani_cell.py -netDir $ASE_ANI_DIR/ani_models/ani-1ccx_8x -in H2O.pdb -out H2O.min.pdb
 ```
 
 This runs a very simple minimization of water using OpenMM and the ANI neural Net potential.
