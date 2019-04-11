@@ -101,31 +101,22 @@ double CudaCalcANIForceKernel::execute(ContextImpl& context, bool includeForces,
     }
 
 
+    //cerr<<"usePeriodic " << usePeriodic << "\t";
     if (usePeriodic) {
        // Example PBC usage -- set the periodic cell (use angstroms)
        // units A
        //=================Code below=================
        Vec3 box[3];
        cu.getPeriodicBoxVectors(box[0], box[1], box[2]);
-       std::vector<float> cell = {10.000000,  0.000000,  0.000000,
-                                   0.000000, 10.000000,  0.000000,
-                                   0.000000,  0.000000, 10.000000};
+       std::vector<float> cell(9);
+       for (int i = 0; i < 3; i++)
+           for (int j = 0; j < 3; j++)
+           {  cell[3*i+j] = box[i][j] * NM_TO_ANGST; 
+              //cerr<< cell[3*i+j] << " ";
+           }
        neurochem::set_cell(cell, true, true, true);
-
-    /*
-    //=================Code above=================
-
-
-        Vec3 box[3];
-        cu.getPeriodicBoxVectors(box[0], box[1], box[2]);
-        if (boxType == TF_FLOAT) {
-            float* boxVectors = reinterpret_cast<float*>(TF_TensorData(boxVectorsTensor));
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    boxVectors[3*i+j] = box[i][j];
-        }
     }
-    */
+    //cerr<<endl;
 
     // Compute energies for the ensemble, libANI ennergies are in Hartree's
     double energy = neurochem::compute_ensemble_energy(aniPositions, atomicSymbols);

@@ -34,9 +34,9 @@ import os
 import sys
 import platform
 
-openmm_dir = '@OPENMM_DIR@'
-nn_plugin_header_dir = '@NN_PLUGIN_HEADER_DIR@'
-nn_plugin_library_dir = '@NN_PLUGIN_LIBRARY_DIR@'
+openmm_dir = '/gstore/home/albertgo/.conda/envs/openMM2'
+nn_plugin_header_dir = '/gstore/home/albertgo/dev/openmm-neural/openmm-ani/openmmapi/include'
+nn_plugin_library_dir = '/gstore/home/albertgo/dev/openmm-neural/openmm-ani'
 
 # setup extra compile and link arguments on Mac
 extra_compile_args = []
